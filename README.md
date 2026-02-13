@@ -104,10 +104,12 @@ Thanks for taking the time to do this coding challenge and here's hoping we talk
 # Design Details and Thought Process
 
 For the testing suites, I took the liberty of adding additional tests and edge cases for different situations. I also confirmed myself that all test cases pass. Changes and additions are commented appropriately. 
-I added a status field to types.ts, when keeping in mind that executePayment
+
+
+I added a status field to types.ts and expanded the PaymentDocs schema, when keeping in mind that executePayment
 remain an asychronous operation. Without tracking a status, we have no way to know
 whether a payment has already been executed, whether it is currently being executed, or whether it failed.
-  No Status or Failed = Allow execution
-  Pending = Block in order to prevent a race condition (because they would be processing the same data concurrently)
-  Succeeded = Block, to prevent double-sending
+  * No Status or Failed = Allow execution
+  * Pending = Block in order to prevent a race condition (because they would be * processing the same data concurrently)
+  * Succeeded = Block, to prevent double-sending
 
